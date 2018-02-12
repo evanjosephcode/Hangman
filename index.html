@@ -3,23 +3,41 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Rock Paper Scissors Part 7</title>
+  <title>Hangman</title>
 </head>
 
 <body>
 
   <div id="game">
-    <p>Press any alphabetical character to guess the word. It's Hangman, ya know?</p>
+    <p>Press any alphabetical character to guess the word. You have 8 tries. It's Hangman, ya know?</p>
   </div>
 
   <script type="text/javascript">
   //lists out all the options
-  var computerWords = ["doggies", "kittens", "programming", "saturday"];
-  
-  //not a var userChoices = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m" // 
+  var computerWords = ["doggies", "kittens", "programming", "saturday", "bagels", "pneumonia", "cookies", "palindrome"];
 
 
-  var triesRemaining = 12;
+  // conditions for 
+  var hangMan = {
+    attempts: 0,
+
+    addBadLetter: function () {
+      this.attempts++;
+      alert("You have tried "+this.attempts);
+    }1
+
+    stopGame: function () {
+      this.attempts >= 8;
+      alert("That is game");
+    }
+
+  }
+
+  var userChoices = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"]; 
+
+  //  previous effort 
+  //var userAttempts = [];
+  //var triesRemaining = 12;
 
   // function run whenever user presses a key
   document.onkeyup = function(event) {
@@ -29,12 +47,22 @@
 
     // randomly chooses a word from the pool of words
     var computerGuess = computerChoices[Math.floor(Math.random() * computerWords.length)
+
+   // afterGuess: function() {
+         // alert("Old Mileage: " + this.mileage);
+
+         // this.mileage = this.mileage + 8;
+
+         // alert("New mileage: " + this.mileage);
+        },
     
     //determines logic of outcome
 
-    if ((userGuess === ))
-    ]
-  }
+    //for ((userGuess === //a-z )) {
+    //  userAttempts.push(userChoices);
+    // }
+
+  
 
 
   </script>
