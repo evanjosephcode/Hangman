@@ -83,10 +83,15 @@
     if (computerGuess.indexOf(userLetter) === -1) {
       letterFail.push(userLetter);
       document.querySelector("#failedLetters").innerHTML = (letterFail.join(" "));
+        /* if (letterFail = userLetter) {
+          alert("you already did that");
+        } */
       triesRemaining = triesRemaining - 1;
       document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
+      document.querySelector("#resultStatus").innerHTML = "";
         if (triesRemaining === 0) {
           alert("You suck");
+          location.reload();
         }
     }
 
@@ -99,7 +104,16 @@
       COMPLETE -- attempts count down from 8, 
       stop game at 0 
       if all chars filled in, alert(win)
-      if its not a match in chars, want the "its a match" to go away
+      KINDA COMPLETE -- if its not a match in chars, want the "its a match" to go away
+
+      questions - 
+      handle duplicate letters that are correct to take it in the maskedWord
+      get rid of meta
+      not take the same wrong letter twice to count against you 
+      make a win screen 
+
+
+
     */
 
 
