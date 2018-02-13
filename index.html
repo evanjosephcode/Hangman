@@ -15,6 +15,7 @@
     <h2 id="yep"></h2>
     <h2 id="match"></h2>
     <h2 id="losses"></h2>
+    <h2 id="failed"></h2>
   </div>
 
   <script type="text/javascript">
@@ -58,6 +59,12 @@
       
     }  
     
+    var letterFail = [];
+    // NOT WORKING EITHER -- trying to create an array letterFail and have it display failed letters using innerHTML
+    if (computerGuess.indexOf(userLetter) === -1) {
+      document.querySelector("#failed").innerHTML = (letterFail.join(" "));
+    }
+
     /* breaks every thing 
     var wins = 0
     var losses = 0
