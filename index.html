@@ -9,31 +9,23 @@
 <body>
 
   <div id="game">
-    <p>Press any alphabetical character to guess the word. You have 8 tries. It's Hangman, ya know?</p>
+    <h1>Press any alphabetical character to guess the word. 
+          You have 8 tries. It's Hangman, ya know?
+    </h1>
+    <h2 id="yep"></h2>
+    <h2 id="match"></h2>
+    <h2 id="losses"></h2>
   </div>
 
   <script type="text/javascript">
   //lists out all the options
   var computerWords = ["doggies", "kittens", "programming", "saturday", "bagels", "pneumonia", "cookies", "palindrome"];
-
-
-  // conditions for 
-  var hangMan = {
-    attempts: 0,
-
-    addBadLetter: function () {
-      this.attempts++;
-      alert("You have tried "+this.attempts);
-    }1
-
-    stopGame: function () {
-      this.attempts >= 8;
-      alert("That is game");
-    }
-
-  }
-
+  var Incorrect = 0 
   var userChoices = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"]; 
+
+  function reWriteStats() {
+    // not a complete function but put in a
+  }
 
   //  previous effort 
   //var userAttempts = [];
@@ -43,10 +35,51 @@
   document.onkeyup = function(event) {
 
     // determines whcih key was pressed
-    var userGuess = event.key
+    var userLetter = event.key.toLowerCase();
 
     // randomly chooses a word from the pool of words
-    var computerGuess = computerChoices[Math.floor(Math.random() * computerWords.length)
+    var computerGuess = computerWords[Math.floor(Math.random() * computerWords.length)];
+    console.log(computerGuess);
+
+    
+    var maskedWord = [];
+
+    for (var i = 0; i < computerGuess.length; i++) {
+      // console.log(computerGuess.charAt(i));
+      maskedWord.push('_ ');
+    }
+      console.log(maskedWord);
+      document.querySelector("#yep").innerHTML = (maskedWord.join(" "));
+
+    if (computerGuess.indexOf(userLetter) !== -1) {
+      console.log("It's a match!");
+      document.querySelector("#match").innerHTML = "it's a match!";
+      // reveal character, in maskedWord and find the index# it pertains to
+      
+    }  
+    
+    /* breaks every thing 
+    var wins = 0
+    var losses = 0
+
+    if ((userLetter === computerGuess.indexOf() )) {
+      wins++; 
+    }
+
+    else ((userLetter != computerGuess.indexOf() )) {
+      losses++; 
+      document.querySelector("#losses").innerHTML = losses 
+    }
+
+    */ 
+
+
+    
+
+    // console.log(maskedWord); 
+
+
+  }
 
    // afterGuess: function() {
          // alert("Old Mileage: " + this.mileage);
@@ -54,7 +87,6 @@
          // this.mileage = this.mileage + 8;
 
          // alert("New mileage: " + this.mileage);
-        },
     
     //determines logic of outcome
 
@@ -68,3 +100,4 @@
   </script>
 
 </body> 
+</html>
