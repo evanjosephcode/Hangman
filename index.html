@@ -19,10 +19,14 @@
   </div>
 
   <script type="text/javascript">
+
   //lists out all the options
   var computerWords = ["doggies", "kittens", "programming", "saturday", "bagels", "pneumonia", "cookies", "palindrome"];
   var Incorrect = 0 
   var userChoices = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"]; 
+
+  var computerGuess = computerWords[Math.floor(Math.random() * computerWords.length)];
+  console.log(computerGuess);
 
   function reWriteStats() {
     // not a complete function but put in a
@@ -38,9 +42,13 @@
     // determines whcih key was pressed
     var userLetter = event.key.toLowerCase();
 
-    // randomly chooses a word from the pool of words
+    /* randomly chooses a word from the pool of words
     var computerGuess = computerWords[Math.floor(Math.random() * computerWords.length)];
     console.log(computerGuess);
+
+    brought outside of onkey upfunction */
+
+  
 
     
     var maskedWord = [];
