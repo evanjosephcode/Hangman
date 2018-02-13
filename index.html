@@ -13,9 +13,9 @@
           You have 8 tries. It's Hangman, ya know?
     </h1>
     <h2 id="maskedWord"></h2>
-    <h2 id="match"></h2>
-    <h2 id="losses"></h2>
-    <h2 id="failed"></h2>
+    <h2 id="resultStatus"></h2>
+    <h2 id="tries"></h2>
+    <h2 id="failedLetters"></h2>
   </div>
 
   <script type="text/javascript">
@@ -60,16 +60,18 @@
       maskedWord = maskedWord.slice(0, computerGuess.length);
     }
       console.log(maskedWord);
-      document.querySelector("#maskedWord").innerHTML = (maskedWord.join(" "));
 
     if (computerGuess.indexOf(userLetter) !== -1) {
       console.log("It's a match!");
-      document.querySelector("#match").innerHTML = "it's a match!";
+      document.querySelector("#resultStatus").innerHTML = "it's a match!";
       maskedWord[(computerGuess.indexOf(userLetter))] = userLetter;
       console.log(maskedWord);
       // reveal character, in maskedWord and find the index# it pertains to
       
     }  
+      document.querySelector("#maskedWord").innerHTML = (maskedWord.join(" "));
+
+
     
     var letterFail = [];
     // NOT WORKING EITHER -- trying to create an array letterFail and have it display failed letters using innerHTML
@@ -79,9 +81,9 @@
 
     /* pseudo coding -- wats left 
       pick word and stay with word, instead of cycling with every onkeyup event
-      display wrong chars in array using innerHTML
-      reveal correct chars filled in maskedWord
-      attempts count down from 8, stop game at 0
+      display wrong chars in array using innerHTML 
+      reveal correct chars filled in maskedWord -- complete
+      attempts count down from 8, stop game at 0 
       if all chars filled in, alert(win)
       if its not a match in chars, want the "its a match" to go away
 
