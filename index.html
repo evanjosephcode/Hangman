@@ -25,9 +25,13 @@
   var triesRemaining = 8;
   var maskedWord = [];
   var userChoices = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"]; 
+  var letterFail = [];
 
   var computerGuess = computerWords[Math.floor(Math.random() * computerWords.length)];
   console.log(computerGuess);
+
+
+  document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
 
   function reWriteStats() {
     // not a complete function but put in a
@@ -66,6 +70,7 @@
       document.querySelector("#resultStatus").innerHTML = "it's a match!";
       maskedWord[(computerGuess.indexOf(userLetter))] = userLetter;
       console.log(maskedWord);
+
       // reveal character, in maskedWord and find the index# it pertains to
       
     }  
@@ -73,21 +78,28 @@
 
 
     
-    var letterFail = [];
+
     // NOT WORKING EITHER -- trying to create an array letterFail and have it display failed letters using innerHTML
     if (computerGuess.indexOf(userLetter) === -1) {
-      document.querySelector("#failed").innerHTML = (letterFail.join(" "));
+      letterFail.push(userLetter);
+      document.querySelector("#failedLetters").innerHTML = (letterFail.join(" "));
+      triesRemaining = triesRemaining - 1;
+      document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
+        if (triesRemaining === 0) {
+          alert("You suck");
+        }
     }
 
+
+
     /* pseudo coding -- wats left 
-      pick word and stay with word, instead of cycling with every onkeyup event
-      display wrong chars in array using innerHTML 
-      reveal correct chars filled in maskedWord -- complete
-      attempts count down from 8, stop game at 0 
+      COMPLETE -- pick word and stay with word, instead of cycling with every onkeyup event
+      ALMOST complete -- display wrong chars in array using innerHTML -- almost complete minus 'meta' showing up before that
+      COMPLETE -- reveal correct chars filled in maskedWord 
+      COMPLETE -- attempts count down from 8, 
+      stop game at 0 
       if all chars filled in, alert(win)
       if its not a match in chars, want the "its a match" to go away
-
-
     */
 
 
