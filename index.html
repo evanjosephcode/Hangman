@@ -27,7 +27,16 @@
   var letterFail = [];
 
   var computerGuess = computerWords[Math.floor(Math.random() * computerWords.length)];
+  for (var i = 0; i < computerGuess.length; i++) {
+      // console.log(computerGuess.charAt(i));
+      maskedWord.push('_ ');
+      maskedWord = maskedWord.slice(0, computerGuess.length);
+    }
+      console.log(maskedWord);
+      document.querySelector("#maskedWord").innerHTML = (maskedWord.join(" "));
+      
   console.log(computerGuess);
+      
 
   document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
 
@@ -58,20 +67,25 @@
     }  
       document.querySelector("#maskedWord").innerHTML = (maskedWord.join(" "));
     
-    // NOT WORKING EITHER -- trying to create an array letterFail and have it display failed letters using innerHTML
+    //Incorrect Answer
     if (computerGuess.indexOf(userLetter) === -1) {
       if (letterFail.indexOf(userLetter) !== -1) {
         alert("You already tried that letter... I pity a fool");
-      } else {
-      letterFail.push(userLetter);
-      document.querySelector("#failedLetters").innerHTML = (letterFail.join(" "));
-      triesRemaining = triesRemaining - 1;
-      document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
-      document.querySelector("#resultStatus").innerHTML = "";
-        if (triesRemaining === 0) {
-          alert("You suck");
-          location.reload();
-        }}
+      } 
+        else if (userChoices.indexOf(userLetter) === -1) {
+        alert("Clearly, you didn't read the VERY CLEAR instructions!")
+      } 
+        else {
+        letterFail.push(userLetter)
+        document.querySelector("#failedLetters").innerHTML = (letterFail.join(" "));
+        triesRemaining = triesRemaining - 1;
+        document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
+        document.querySelector("#resultStatus").innerHTML = "";
+          if (triesRemaining === 0) {
+            alert("You suck");
+            location.reload();
+          }
+      } 
     }
 
     if (maskedWord.indexOf("_ ") === -1) {
@@ -79,9 +93,6 @@
       location.reload();
     }
 
-    /* if (maskedWord.indexOf("_ ") === -1) {
-      alert("you win!");
-    } */
     
     /* pseudo coding -- wats left 
       COMPLETE -- pick word and stay with word, instead of cycling with every onkeyup event
