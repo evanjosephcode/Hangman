@@ -19,7 +19,6 @@
   </div>
 
   <script type="text/javascript">
-
   //lists out all the options
   var computerWords = ["doggies", "kittens", "programming", "saturday", "bagels", "pneumonia", "cookies", "palindrome"];
   var triesRemaining = 8;
@@ -30,73 +29,60 @@
   var computerGuess = computerWords[Math.floor(Math.random() * computerWords.length)];
   console.log(computerGuess);
 
-
   document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
 
-  function reWriteStats() {
-    // not a complete function but put in a
-  }
-
-  //  previous effort 
-  //var userAttempts = [];
-  //var triesRemaining = 12;
-
-  // function run whenever user presses a key
   document.onkeyup = function(event) {
-
     // determines whcih key was pressed
     var userLetter = event.key.toLowerCase();
-
-    /* randomly chooses a word from the pool of words
-    var computerGuess = computerWords[Math.floor(Math.random() * computerWords.length)];
-    console.log(computerGuess);
-
-    brought outside of onkey upfunction */
-
-  
-  
-    
-  
-
+    console.log(userLetter);
+ 
     for (var i = 0; i < computerGuess.length; i++) {
       // console.log(computerGuess.charAt(i));
       maskedWord.push('_ ');
       maskedWord = maskedWord.slice(0, computerGuess.length);
     }
       console.log(maskedWord);
-
+      
+      //Guessed Correctly
     if (computerGuess.indexOf(userLetter) !== -1) {
       console.log("It's a match!");
       document.querySelector("#resultStatus").innerHTML = "it's a match!";
-      maskedWord[(computerGuess.indexOf(userLetter))] = userLetter;
+        for (var i = 0; i < computerGuess.length; i++) {
+          if (userLetter == computerGuess[i]) {
+            (maskedWord[i]) = userLetter;
+          }
+        }
       console.log(maskedWord);
-
       // reveal character, in maskedWord and find the index# it pertains to
       
     }  
       document.querySelector("#maskedWord").innerHTML = (maskedWord.join(" "));
-
-
     
-
     // NOT WORKING EITHER -- trying to create an array letterFail and have it display failed letters using innerHTML
     if (computerGuess.indexOf(userLetter) === -1) {
+      if (letterFail.indexOf(userLetter) !== -1) {
+        alert("You already tried that letter... I pity a fool");
+      } else {
       letterFail.push(userLetter);
       document.querySelector("#failedLetters").innerHTML = (letterFail.join(" "));
-        /* if (letterFail.indexof(userLetter) = userLetter) {
-          alert("you already did that");
-        } */
       triesRemaining = triesRemaining - 1;
       document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
       document.querySelector("#resultStatus").innerHTML = "";
         if (triesRemaining === 0) {
           alert("You suck");
           location.reload();
-        }
+        }}
     }
 
+    if (maskedWord.indexOf("_ ") === -1) {
+      alert("you win!");
+      location.reload();
+    }
 
-
+    /* if (maskedWord.indexOf("_ ") === -1) {
+      alert("you win!");
+    } */
+    
     /* pseudo coding -- wats left 
       COMPLETE -- pick word and stay with word, instead of cycling with every onkeyup event
       ALMOST complete -- display wrong chars in array using innerHTML -- almost complete minus 'meta' showing up before that
@@ -105,58 +91,16 @@
       stop game at 0 
       if all chars filled in, alert(win)
       KINDA COMPLETE -- if its not a match in chars, want the "its a match" to go away
-
       questions - 
       handle duplicate letters that are correct to take it in the maskedWord
       get rid of meta
       not take the same wrong letter twice to count against you 
       make a win screen 
-
-
-
     */
-
-
-
-    /* breaks every thing 
-    var wins = 0
-    var losses = 0
-
-    if ((userLetter === computerGuess.indexOf() )) {
-      wins++; 
-    }
-
-    else ((userLetter != computerGuess.indexOf() )) {
-      losses++; 
-      document.querySelector("#losses").innerHTML = losses 
-    }
-
-    */ 
-
-
     
-
-    // console.log(maskedWord); 
-
-
   }
-
-   // afterGuess: function() {
-         // alert("Old Mileage: " + this.mileage);
-
-         // this.mileage = this.mileage + 8;
-
-         // alert("New mileage: " + this.mileage);
-    
-    //determines logic of outcome
-
-    //for ((userGuess === //a-z )) {
-    //  userAttempts.push(userChoices);
-    // }
-
   
-
-
+  
   </script>
 
 </body> 
