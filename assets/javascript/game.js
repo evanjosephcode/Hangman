@@ -1,7 +1,7 @@
 
   //lists out all the options
 
-  var computerWords = ["doggies", "kittens", "programming", "saturday", "bagels", "pneumonia", "cookies", "palindrome"];
+  var computerWords = ["doggies", "kittens", "programming", "saturday", "bagels", "pneumonia", "cookies", "palindrome", "scooters", "jellyfish", "bolognese", "widgets", "cilantro", "quesadilla"];
   var triesRemaining = 8;
   var maskedWord = [];
   var userChoices = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"]; 
@@ -36,7 +36,7 @@
       //Guessed Correctly
     if (computerGuess.indexOf(userLetter) !== -1) {
       console.log("It's a match!");
-      document.querySelector("#resultStatus").innerHTML = "It's a match (why am I happy about this)!";
+      document.querySelector("#resultStatus").innerHTML = "It's a match (what are these feelz I'm feeling?!?)";
         for (var i = 0; i < computerGuess.length; i++) {
           if (userLetter == computerGuess[i]) {
             (maskedWord[i]) = userLetter;
@@ -60,7 +60,7 @@
         letterFail.push(userLetter)
         document.querySelector("#failedLetters").innerHTML = (letterFail.join(" "));
         triesRemaining = triesRemaining - 1;
-        document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
+        document.querySelector("#tries").innerHTML = "Tries Remaining (may the odds be forever in your favor): "+ triesRemaining;
         document.querySelector("#resultStatus").innerHTML = "";
           if (triesRemaining === 0) {
             alert("You suck");
