@@ -3,116 +3,26 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Hangman</title>
+  <title>Hangman: Attitude Edition</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
 
-  <div id="game">
-    <h1>Press any alphabetical character to guess the word. 
-          You have 8 tries. It's Hangman, ya know?
-    </h1>
-    <h2 id="maskedWord"></h2>
-    <h2 id="resultStatus"></h2>
-    <h2 id="tries"></h2>
-    <h2 id="failedLetters"></h2>
-  </div>
+  <div id="game" class="jumbotron">
+    <h1 class="display-4">Hangman: Attitude Edition</h1>
+    <img src="assets/images/4chan.png" alt="Hangman: Attitude Edition Trollface" align="center" class="sad"/>
+    <h2 id="maskedWord" class="display-4"></h2>
+    <p class="lead">Press any alphabetical character to guess the word. Don't you dare press any non-alphabetical letter. 
+            You have 8 tries. That's about it-- It's Hangman, ya know? Have you never of the game before or something?</p>
+    <hr class="my-4">
+    <p id="resultStatus" class="display-4"></p>
+    <p id="tries" class="lead"></p>
+    <p id="failedLetters"></p>
+    <p class="lead">
 
-  <script type="text/javascript">
-  //lists out all the options
-  var computerWords = ["doggies", "kittens", "programming", "saturday", "bagels", "pneumonia", "cookies", "palindrome"];
-  var triesRemaining = 8;
-  var maskedWord = [];
-  var userChoices = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"]; 
-  var letterFail = [];
-
-  var computerGuess = computerWords[Math.floor(Math.random() * computerWords.length)];
-  for (var i = 0; i < computerGuess.length; i++) {
-      // console.log(computerGuess.charAt(i));
-      maskedWord.push('_ ');
-      maskedWord = maskedWord.slice(0, computerGuess.length);
-    }
-      console.log(maskedWord);
-      document.querySelector("#maskedWord").innerHTML = (maskedWord.join(" "));
-      
-  console.log(computerGuess);
-      
-
-  document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
-
-  document.onkeyup = function(event) {
-    // determines whcih key was pressed
-    var userLetter = event.key.toLowerCase();
-    console.log(userLetter);
- 
-    for (var i = 0; i < computerGuess.length; i++) {
-      // console.log(computerGuess.charAt(i));
-      maskedWord.push('_ ');
-      maskedWord = maskedWord.slice(0, computerGuess.length);
-    }
-      console.log(maskedWord);
-      
-      //Guessed Correctly
-    if (computerGuess.indexOf(userLetter) !== -1) {
-      console.log("It's a match!");
-      document.querySelector("#resultStatus").innerHTML = "it's a match!";
-        for (var i = 0; i < computerGuess.length; i++) {
-          if (userLetter == computerGuess[i]) {
-            (maskedWord[i]) = userLetter;
-          }
-        }
-      console.log(maskedWord);
-      // reveal character, in maskedWord and find the index# it pertains to
-      
-    }  
-      document.querySelector("#maskedWord").innerHTML = (maskedWord.join(" "));
-    
-    //Incorrect Answer
-    if (computerGuess.indexOf(userLetter) === -1) {
-      if (letterFail.indexOf(userLetter) !== -1) {
-        alert("You already tried that letter... I pity a fool");
-      } 
-        else if (userChoices.indexOf(userLetter) === -1) {
-        alert("Clearly, you didn't read the VERY CLEAR instructions!")
-      } 
-        else {
-        letterFail.push(userLetter)
-        document.querySelector("#failedLetters").innerHTML = (letterFail.join(" "));
-        triesRemaining = triesRemaining - 1;
-        document.querySelector("#tries").innerHTML = "Tries Remaining: "+ triesRemaining;
-        document.querySelector("#resultStatus").innerHTML = "";
-          if (triesRemaining === 0) {
-            alert("You suck");
-            location.reload();
-          }
-      } 
-    }
-
-    if (maskedWord.indexOf("_ ") === -1) {
-      alert("you win!");
-      location.reload();
-    }
-
-    
-    /* pseudo coding -- wats left 
-      COMPLETE -- pick word and stay with word, instead of cycling with every onkeyup event
-      ALMOST complete -- display wrong chars in array using innerHTML -- almost complete minus 'meta' showing up before that
-      COMPLETE -- reveal correct chars filled in maskedWord 
-      COMPLETE -- attempts count down from 8, 
-      stop game at 0 
-      if all chars filled in, alert(win)
-      KINDA COMPLETE -- if its not a match in chars, want the "its a match" to go away
-      questions - 
-      handle duplicate letters that are correct to take it in the maskedWord
-      get rid of meta
-      not take the same wrong letter twice to count against you 
-      make a win screen 
-    */
-    
-  }
-  
-  
-  </script>
-
+<script src="assets/javascript/game.js" type="text/javascript"></script> 
 </body> 
 </html>
