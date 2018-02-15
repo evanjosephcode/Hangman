@@ -1,9 +1,11 @@
 .header {
     font-family: 'Indie Flower', cursive;
+    font-size: 48px;
+    margin-top: 0px;
 }
 
 #maskedWord {
-    margin-top: 40px;
+    margin-top: 16px;
 }
 
 #resultStatus {
@@ -19,4 +21,11 @@
 
 .instructions {
     font-size: 1rem;
+}
+
+.jumbotron {
+    padding-top: 10px;
+    padding-right: 2rem;
+    padding-bottom: 4rem;
+    padding-left: 2rem;
 }
