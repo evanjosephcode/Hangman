@@ -6,7 +6,6 @@
   var maskedWord = [];
   var userChoices = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"]; 
   var letterFail = [];
-
   var computerGuess = computerWords[Math.floor(Math.random() * computerWords.length)];
   for (var i = 0; i < computerGuess.length; i++) {
       // console.log(computerGuess.charAt(i));
