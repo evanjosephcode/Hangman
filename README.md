@@ -2,11 +2,7 @@
 
 ### Overview
 
-This is a portfolio page deployed on Github, linked deployed projects and providing social media contact info 
-
-### Important
-
-* constantly being improved and added to
+This is the classic Hangman game, created using front-end JavaScript. The logic to create this one was very fun!
 
 
 # [Github Deployed URL](https://evanjosephcode.github.io/Hangman/)
